@@ -1,6 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Contact: React.FC = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    const formData = new FormData(e.currentTarget);
+    
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        (e.target as HTMLFormElement).reset();
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen pt-24 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -24,20 +52,35 @@ const Contact: React.FC = () => {
           </div>
         </div>
 
-        {/* Netlify Form */}
+        {/* Contact Form */}
         <div className="bg-[#0a0a0a] p-8 border border-white/10 rounded-xl relative overflow-hidden">
            {/* Decorative Top Border */}
            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-lux-green to-transparent"></div>
 
           <form 
-            name="contact" 
-            method="POST" 
-            data-netlify="true" 
-            action="/?success=true"
+            onSubmit={handleSubmit}
             className="space-y-6"
           >
-            {/* Netlify Hidden Input */}
-            <input type="hidden" name="form-name" value="contact" />
+            {/* Web3Forms Access Key - REPLACE WITH YOUR KEY */}
+            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY_HERE" />
+            
+            {/* Optional: Redirect after submission */}
+            <input type="hidden" name="redirect" value="https://lux-ops.com/?success=true" />
+            
+            {/* Your email where submissions go */}
+            <input type="hidden" name="email" value="danielle@lux-ops.com" />
+
+            {/* Status Messages */}
+            {submitStatus === 'success' && (
+              <div className="bg-lux-green/10 border border-lux-green text-lux-green px-4 py-3 rounded font-mono text-sm">
+                ✓ TRANSMISSION SUCCESSFUL
+              </div>
+            )}
+            {submitStatus === 'error' && (
+              <div className="bg-red-500/10 border border-red-500 text-red-500 px-4 py-3 rounded font-mono text-sm">
+                ✗ TRANSMISSION FAILED - RETRY
+              </div>
+            )}
 
             <div>
               <label htmlFor="name" className="block text-xs font-mono text-lux-green uppercase mb-2">Identify</label>
@@ -52,11 +95,11 @@ const Contact: React.FC = () => {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-xs font-mono text-lux-green uppercase mb-2">Comms Channel</label>
+              <label htmlFor="from_email" className="block text-xs font-mono text-lux-green uppercase mb-2">Comms Channel</label>
               <input 
                 type="email" 
-                name="email" 
-                id="email"
+                name="from_email" 
+                id="from_email"
                 required
                 className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-lux-green transition-colors font-sans"
                 placeholder="corporate@email.com"
@@ -87,10 +130,11 @@ const Contact: React.FC = () => {
             </div>
 
             <button 
-              type="submit" 
-              className="w-full bg-white text-black font-display font-bold text-lg py-4 uppercase tracking-widest hover:bg-lux-green transition-colors"
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full bg-white text-black font-display font-bold text-lg py-4 uppercase tracking-widest hover:bg-lux-green transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Transmit Request
+              {isSubmitting ? 'TRANSMITTING...' : 'TRANSMIT REQUEST'}
             </button>
           </form>
         </div>
