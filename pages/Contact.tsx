@@ -62,7 +62,7 @@ const Contact: React.FC = () => {
             className="space-y-6"
           >
             {/* Web3Forms Access Key - REPLACE WITH YOUR KEY */}
-            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY_HERE" />
+            <input type="hidden" name="access_key" value="82c321fe-4962-4d45-8124-33ee5cc76b6e" />
             
             {/* Optional: Redirect after submission */}
             <input type="hidden" name="redirect" value="https://lux-ops.com/?success=true" />
