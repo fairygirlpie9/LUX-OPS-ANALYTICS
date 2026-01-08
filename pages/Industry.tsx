@@ -183,7 +183,7 @@ const Industry: React.FC = () => {
                      {tier.subPrice && <span className="text-gray-500 ml-2 font-mono text-xs uppercase tracking-widest">{tier.subPrice}</span>}
                   </div>
                 </div>
-                <p className="text-gray-400 font-mono text-sm">{tier.description}</p>
+                <p className="text-gray-400 font-mono text-sm min-h-[3rem]">{tier.description}</p>
               </div>
 
               <ul className="flex-1 space-y-4 mb-8">

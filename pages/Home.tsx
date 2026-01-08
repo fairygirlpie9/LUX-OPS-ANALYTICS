@@ -6,6 +6,14 @@ import { ArrowRight, Trophy, Hexagon } from 'lucide-react';
 import { INDUSTRIES_DATA } from '../constants';
 import { IndustryType } from '../types';
 
+// Images for the cards
+const INDUSTRY_IMAGES = {
+  [IndustryType.MOTORSPORTS]: "https://i.ibb.co/r20kTnvW/motorsports-lux-ops.jpg",
+  [IndustryType.FLEET]: "https://i.ibb.co/7dx1fyD4/fleets-vans-lux-ops.jpg",
+  [IndustryType.AERIAL]: "https://i.ibb.co/8gk7zPbw/drones-lux-ops.jpg",
+  [IndustryType.CUSTOM]: "https://i.ibb.co/HDfhZnPr/Untitled-4.jpg"
+};
+
 const Home: React.FC = () => {
   const navigate = useNavigate();
 
@@ -30,9 +38,9 @@ const Home: React.FC = () => {
           {/* Headlines */}
           <div className="max-w-5xl mx-auto">
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-display font-bold uppercase tracking-tight leading-[0.9] text-white">
-              TURN COMPLEX <br />
-              <span className="text-lux-green">TELEMETRY INTO</span> <br />
-              CLEAR DECISIONS
+              TURN COMPLE&#8202;X <br />
+              <span className="text-lux-green">TELEME&#8202;TRY INTO</span> <br />
+              CL&#8202;EAR DECISIONS
             </h1>
           </div>
 
@@ -43,17 +51,17 @@ const Home: React.FC = () => {
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <button 
-              onClick={() => navigate('/contact')}
-              className="bg-white text-black px-8 py-4 font-display font-bold text-lg tracking-wide hover:bg-lux-green transition-colors uppercase flex items-center justify-center"
+              onClick={() => navigate('/industry/motorsports')}
+              className="bg-lux-green text-black px-8 py-4 font-display font-bold text-lg tracking-wide hover:bg-white transition-colors uppercase flex items-center justify-center"
             >
-              Schedule 15-Min Demo
+              See Live Demos
               <ArrowRight className="ml-2 w-5 h-5" />
             </button>
             <button 
               onClick={() => navigate('/contact')}
               className="border border-white text-white px-8 py-4 font-display font-bold text-lg tracking-wide hover:bg-white hover:text-black transition-colors uppercase"
             >
-              Contact Sales
+              Schedule 15-Min Demo
             </button>
           </div>
         </section>
@@ -92,22 +100,40 @@ const Home: React.FC = () => {
               <button
                 key={type}
                 onClick={() => navigate(`/industry/${type}`)}
-                className="group flex items-center justify-between bg-white/5 border border-white/10 p-6 hover:border-lux-green hover:bg-white/10 transition-all text-left"
+                className="group relative h-48 md:h-64 overflow-hidden rounded-lg border border-white/10 transition-all hover:border-lux-green"
               >
-                <div className="flex items-center">
-                  <div className="bg-white/10 p-3 rounded mr-4 group-hover:bg-lux-green group-hover:text-black transition-colors">
-                    <Hexagon className="w-6 h-6 group-hover:rotate-90 transition-transform" />
-                  </div>
-                  <div>
-                    <span className="font-display font-bold text-white uppercase tracking-wider text-lg block">
-                      {INDUSTRIES_DATA[type].title}
-                    </span>
-                    <span className="font-mono text-xs text-gray-500 uppercase tracking-widest group-hover:text-white/80 transition-colors">
-                      {INDUSTRIES_DATA[type].subtitle}
-                    </span>
-                  </div>
+                {/* Background (Iframe or Image) */}
+                <div className="absolute inset-0">
+                    {INDUSTRY_IMAGES[type].endsWith('.jpg') || INDUSTRY_IMAGES[type].endsWith('.png') ? (
+                       <img 
+                          src={INDUSTRY_IMAGES[type]} 
+                          alt={INDUSTRIES_DATA[type].title} 
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-40 group-hover:opacity-20 grayscale"
+                       />
+                    ) : (
+                       <iframe 
+                          src={INDUSTRY_IMAGES[type]} 
+                          title={INDUSTRIES_DATA[type].title}
+                          className="w-full h-full object-cover pointer-events-none opacity-40 group-hover:opacity-20 transition-opacity duration-700 grayscale"
+                          tabIndex={-1}
+                       />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none"></div>
                 </div>
-                <ArrowRight className="w-5 h-5 text-gray-500 group-hover:text-lux-green group-hover:translate-x-1 transition-all" />
+
+                {/* Content */}
+                <div className="absolute inset-0 p-6 flex flex-col justify-end items-start text-left z-10 pointer-events-none">
+                    <div className="bg-white/10 backdrop-blur-md p-2 rounded mb-3 group-hover:bg-lux-green group-hover:text-black transition-colors">
+                        <Hexagon className="w-6 h-6 group-hover:rotate-90 transition-transform" />
+                    </div>
+                    <h3 className="text-2xl font-display font-bold text-white uppercase tracking-wider mb-1">
+                        {INDUSTRIES_DATA[type].title}
+                    </h3>
+                    <p className="font-mono text-xs text-gray-400 uppercase tracking-widest group-hover:text-white transition-colors">
+                        {INDUSTRIES_DATA[type].subtitle}
+                    </p>
+                    <ArrowRight className="absolute bottom-6 right-6 w-6 h-6 text-gray-500 group-hover:text-lux-green group-hover:translate-x-1 transition-all" />
+                </div>
               </button>
             ))}
           </div>

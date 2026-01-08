@@ -123,7 +123,8 @@ const Pricing: React.FC = () => {
         </div>
 
         <p className="text-gray-400 max-w-2xl mx-auto font-mono text-lg">
-          One-time build fees. Optional retainers. No hidden monthly subscriptions.
+          One-time build fees. Optional retainers. <br />
+          No hidden monthly subscriptions.
         </p>
       </div>
 
@@ -152,7 +153,7 @@ const Pricing: React.FC = () => {
                    {tier.subPrice && <span className="text-gray-500 ml-2 font-mono text-xs uppercase tracking-widest">{tier.subPrice}</span>}
                 </div>
               </div>
-              <p className="text-gray-400 font-mono text-sm">{tier.description}</p>
+              <p className="text-gray-400 font-mono text-sm min-h-[3rem]">{tier.description}</p>
             </div>
 
             <ul className="flex-1 space-y-4 mb-8">
