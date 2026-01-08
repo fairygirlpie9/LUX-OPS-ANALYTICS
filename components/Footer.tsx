@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center mb-4 md:mb-0">
             <Hexagon className="h-6 w-6 text-gray-600" />
-            <span className="ml-2 text-gray-500 font-mono text-sm">LUX OPS SYSTEMS // EST. 2024</span>
+            <span className="ml-2 text-gray-500 font-mono text-sm">LUX OPS SYSTEMS // EST. 2025</span>
           </div>
           <div className="text-gray-600 font-mono text-xs">
             © {new Date().getFullYear()} LUX OPS. ALL SYSTEMS OPERATIONAL.

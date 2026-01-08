@@ -4,6 +4,18 @@ import { OrbitControls, Icosahedron } from '@react-three/drei';
 import { Mesh } from 'three';
 import { LUX_GREEN } from '../constants';
 
+// Add missing type definitions for Three.js elements in JSX
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      meshStandardMaterial: any;
+      ambientLight: any;
+      pointLight: any;
+      spotLight: any;
+    }
+  }
+}
+
 const AnimatedIcosahedron = () => {
   const outerRef = useRef<Mesh>(null);
   const innerRef = useRef<Mesh>(null);

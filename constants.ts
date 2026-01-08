@@ -27,13 +27,13 @@ export const INDUSTRIES_DATA: Record<IndustryType, IndustryData> = {
     features: ['3D Flight Path Visualization', 'Battery Health Monitoring', 'Swarm Coordination', 'Payload Data Stream'],
     dashboardUrl: 'https://luxopsaerial.netlify.app/'
   },
-  [IndustryType.EVENTS]: {
-    id: IndustryType.EVENTS,
-    title: 'LIVE EVENTS',
-    subtitle: 'Crowd & Venue Analytics',
-    description: 'Real-time density mapping and resource allocation for large-scale festivals, concerts, and sporting events.',
-    features: ['Crowd Density Heatmaps', 'Security Response Times', 'Queue Management', 'Access Control Logs'],
-    dashboardUrl: 'https://luxopsevents.netlify.app/'
+  [IndustryType.CUSTOM]: {
+    id: IndustryType.CUSTOM,
+    title: 'CUSTOM SOLUTIONS',
+    subtitle: 'Enterprise & Industrial Command Centers',
+    description: 'We build mission-critical command centers for any industry. From automated manufacturing plants to smart city infrastructure, we transform complex data streams into real-time operational intelligence. Secure, scalable, and fully bespoke to your KPIs.',
+    features: ['Multi-Source Data Integration', 'Industrial IoT & SCADA Support', 'Bespoke UI/UX Design', 'Predictive AI Modeling'],
+    dashboardUrl: ''
   }
 };
 

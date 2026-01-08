@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Hexagon, ChevronDown, Menu, X, Zap } from 'lucide-react';
 import { IndustryType } from '../types';
+import { INDUSTRIES_DATA } from '../constants';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -44,7 +45,7 @@ const Header: React.FC = () => {
               {/* Dropdown */}
               {(isIndustryOpen) && (
                 <div 
-                  className="absolute top-full left-0 w-48 bg-lux-black border border-white/10 shadow-2xl mt-2 py-2"
+                  className="absolute top-full left-0 w-56 bg-lux-black border border-white/10 shadow-2xl mt-2 py-2"
                   onMouseLeave={() => setIsIndustryOpen(false)}
                 >
                   {Object.values(IndustryType).map((type) => (
@@ -53,18 +54,21 @@ const Header: React.FC = () => {
                       className="block px-4 py-3 text-sm font-bold text-gray-300 hover:text-lux-green hover:bg-white/5 cursor-pointer uppercase border-l-2 border-transparent hover:border-lux-green transition-all font-mono"
                       onClick={() => handleNav(`/industry/${type}`)}
                     >
-                      {type}
+                      {INDUSTRIES_DATA[type]?.title || type}
                     </div>
                   ))}
                 </div>
               )}
             </div>
 
+            <Link to="/residential" className="text-sm font-bold tracking-widest text-gray-300 hover:text-lux-green transition-colors uppercase font-mono">
+              Residential
+            </Link>
             <Link to="/pricing" className="text-sm font-bold tracking-widest text-gray-300 hover:text-lux-green transition-colors uppercase font-mono">
               Pricing
             </Link>
-            <Link to="/methodology" className="text-sm font-bold tracking-widest text-gray-300 hover:text-lux-green transition-colors uppercase font-mono">
-              Methodology
+            <Link to="/blog" className="text-sm font-bold tracking-widest text-gray-300 hover:text-lux-green transition-colors uppercase font-mono">
+              Blog
             </Link>
             <Link to="/contact" className="text-sm font-bold tracking-widest text-gray-300 hover:text-lux-green transition-colors uppercase font-mono">
               Contact
@@ -102,15 +106,18 @@ const Header: React.FC = () => {
                 className="block px-3 py-4 text-xl font-bold text-white hover:text-lux-green hover:bg-white/5 cursor-pointer uppercase font-mono border-b border-white/5"
                 onClick={() => handleNav(`/industry/${type}`)}
               >
-                {type}
+                {INDUSTRIES_DATA[type]?.title || type}
               </div>
             ))}
             <div className="my-2"></div>
+            <Link to="/residential" onClick={() => setIsMenuOpen(false)} className="block px-3 py-4 text-xl font-bold text-white hover:text-lux-green hover:bg-white/5 uppercase font-mono border-b border-white/5">
+              Residential
+            </Link>
             <Link to="/pricing" onClick={() => setIsMenuOpen(false)} className="block px-3 py-4 text-xl font-bold text-white hover:text-lux-green hover:bg-white/5 uppercase font-mono border-b border-white/5">
               Pricing
             </Link>
-            <Link to="/methodology" onClick={() => setIsMenuOpen(false)} className="block px-3 py-4 text-xl font-bold text-white hover:text-lux-green hover:bg-white/5 uppercase font-mono border-b border-white/5">
-              Methodology
+            <Link to="/blog" onClick={() => setIsMenuOpen(false)} className="block px-3 py-4 text-xl font-bold text-white hover:text-lux-green hover:bg-white/5 uppercase font-mono border-b border-white/5">
+              Blog
             </Link>
             <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="block px-3 py-4 text-xl font-bold text-white hover:text-lux-green hover:bg-white/5 uppercase font-mono border-b border-white/5">
               Contact

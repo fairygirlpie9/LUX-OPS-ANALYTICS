@@ -8,7 +8,7 @@ export enum IndustryType {
   MOTORSPORTS = 'motorsports',
   FLEET = 'fleet',
   AERIAL = 'aerial',
-  EVENTS = 'events'
+  CUSTOM = 'custom'
 }
 
 export interface PricingTier {

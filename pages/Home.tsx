@@ -25,14 +25,6 @@ const Home: React.FC = () => {
                 Award-Winner: Toyota GR Racing Analytics
               </span>
             </div>
-
-            <div className="flex items-center space-x-2">
-              <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lux-green opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-lux-green"></span>
-              </span>
-              <span className="font-mono text-xs text-lux-green tracking-widest">SYSTEM ONLINE</span>
-            </div>
           </div>
 
           {/* Headlines */}
@@ -45,7 +37,7 @@ const Home: React.FC = () => {
           </div>
 
           <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light font-sans">
-            Real-time operations intelligence trusted by racing teams, fleet operators, and event managers.
+            Real-time operations intelligence trusted by racing teams, fleet operators, and residential estates.
           </p>
 
           {/* CTAs */}
@@ -61,7 +53,7 @@ const Home: React.FC = () => {
               onClick={() => navigate('/contact')}
               className="border border-white text-white px-8 py-4 font-display font-bold text-lg tracking-wide hover:bg-white hover:text-black transition-colors uppercase"
             >
-              Try Studio Free
+              Contact Sales
             </button>
           </div>
         </section>

@@ -5,8 +5,9 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Industry from './pages/Industry';
 import Pricing from './pages/Pricing';
-import Methodology from './pages/Methodology';
+import Blog from './pages/Blog';
 import Contact from './pages/Contact';
+import Residential from './pages/Residential';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -26,8 +27,9 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/industry/:type" element={<Industry />} />
+            <Route path="/residential" element={<Residential />} />
             <Route path="/pricing" element={<Pricing />} />
-            <Route path="/methodology" element={<Methodology />} />
+            <Route path="/blog" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
