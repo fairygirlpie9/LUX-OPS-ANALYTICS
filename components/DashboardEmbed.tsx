@@ -10,7 +10,7 @@ const DashboardEmbed: React.FC<DashboardEmbedProps> = ({ url, title }) => {
   const [isLoading, setIsLoading] = React.useState(true);
 
   return (
-    <div className="w-full aspect-[4/3] bg-[#0a0a0a] border border-white/10 rounded-lg relative overflow-hidden group max-w-5xl mx-auto flex flex-col">
+    <div className="w-full h-[600px] md:h-[850px] bg-[#0a0a0a] border border-white/10 rounded-lg relative overflow-hidden group flex flex-col shadow-2xl">
       
       {/* Header/Control bar simulation */}
       <div className="h-8 bg-lux-black/80 border-b border-white/10 z-10 flex items-center justify-between px-4 backdrop-blur-sm shrink-0">
@@ -42,6 +42,7 @@ const DashboardEmbed: React.FC<DashboardEmbedProps> = ({ url, title }) => {
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
+            scrolling="yes"
             />
         ) : (
             <div className="absolute inset-0 flex items-center justify-center bg-[#050505]">

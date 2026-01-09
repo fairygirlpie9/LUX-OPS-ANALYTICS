@@ -111,7 +111,7 @@ const Industry: React.FC = () => {
       {/* Dashboard Embed or Custom Image */}
       <div className="mb-16">
         {isCustom ? (
-           <div className="w-full aspect-[16/9] bg-[#0a0a0a] border border-white/10 rounded-lg relative overflow-hidden group max-w-5xl mx-auto">
+           <div className="w-full h-[600px] md:h-[850px] bg-[#0a0a0a] border border-white/10 rounded-lg relative overflow-hidden group mx-auto">
              {/* Overlay to darken/tech-ify the image */}
              <div className="absolute inset-0 bg-lux-green/5 pointer-events-none mix-blend-overlay"></div>
              <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60"></div>

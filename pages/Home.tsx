@@ -40,7 +40,7 @@ const Home: React.FC = () => {
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-display font-bold uppercase tracking-tight leading-[0.9] text-white">
               TURN COMPLE&#8202;X <br />
               <span className="text-lux-green">TELEME&#8202;TRY INTO</span> <br />
-              CL&#8202;EAR DECISIONS
+              CL EAR DECISIONS
             </h1>
           </div>
 
