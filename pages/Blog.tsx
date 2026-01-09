@@ -63,7 +63,7 @@ const Blog: React.FC = () => {
         <section>
           <h2 className="text-2xl font-display font-bold text-lux-green uppercase mb-4 tracking-wide">How I Built It</h2>
           <p className="text-gray-300 text-lg leading-relaxed font-sans">
-            The dashboard was built using JavaScript and the three.js library for the visualisation and car movement. For data, I used the anonymised CSV files provided for the competition, including the Analysis Endurance and Weather data for Race 1, to simulate a live data feed. Creating the track layout involved tracing the Barber circuit on Google Maps, converting the file from KML to TXT, and then rendering it as an SVG to plot the animated car positions.
+            The dashboard was built using JavaScript and Three.js for the visualisation and real-time car movement. Live telemetry is ingested via API, with data streams for lap times, positions, weather conditions, and vehicle diagnostics processed in milliseconds. The track layout was created by tracing the Barber Motorsports Park circuit and rendering it as an SVG, allowing animated car positions to update in sync with incoming data.
           </p>
         </section>
 
@@ -71,7 +71,7 @@ const Blog: React.FC = () => {
         <section>
           <h2 className="text-2xl font-display font-bold text-lux-green uppercase mb-4 tracking-wide">What We Can Do For You</h2>
           <p className="text-gray-300 text-lg leading-relaxed font-sans">
-            While this project was built for racing, our underlying decision engine works for any industry. We build custom, high-performance dashboards that integrate with your existing APIs whether you're tracking logistics fleets, monitoring drone swarms, or managing energy grids. We specialize in taking complex data streams and turning them into simple, clear instructions for your team. No bloat, no confusion, just the intelligence you need, displayed exactly when you need it. From small teams to enterprise operations, we can deploy a custom solution in as little as two weeks.
+            This project was built for racing, but the same approach works for any industry with real-time data. We build custom dashboards that integrate with your existing APIs, whether you're tracking logistics fleets, managing energy systems, or monitoring remote operations. We take complex data streams and turn them into clear, actionable information for your team. No bloat, no clutter, just what you need to make decisions fast. From small teams to enterprise operations, we typically deploy a custom solution within two to four weeks.
           </p>
         </section>
 

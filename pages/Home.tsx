@@ -11,7 +11,7 @@ const INDUSTRY_IMAGES = {
   [IndustryType.MOTORSPORTS]: "https://i.ibb.co/r20kTnvW/motorsports-lux-ops.jpg",
   [IndustryType.FLEET]: "https://i.ibb.co/7dx1fyD4/fleets-vans-lux-ops.jpg",
   [IndustryType.AERIAL]: "https://i.ibb.co/8gk7zPbw/drones-lux-ops.jpg",
-  [IndustryType.CUSTOM]: "https://i.ibb.co/HDfhZnPr/Untitled-4.jpg"
+  [IndustryType.CUSTOM]: "https://i.ibb.co/FLqsFzX3/yacht.jpg"
 };
 
 const Home: React.FC = () => {

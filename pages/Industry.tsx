@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { INDUSTRIES_DATA } from '../constants';
 import { IndustryType } from '../types';
 import DashboardEmbed from '../components/DashboardEmbed';
-import { ChevronRight, CheckCircle2, Check, Plus } from 'lucide-react';
+import { ChevronRight, CheckCircle2, Check, Plus, Crosshair, Scan, Battery, Grip } from 'lucide-react';
 import clsx from 'clsx';
 
 const INDUSTRY_PRICING = [
@@ -111,31 +111,88 @@ const Industry: React.FC = () => {
       {/* Dashboard Embed or Custom Image */}
       <div className="mb-16">
         {isCustom ? (
-           <div className="w-full h-[600px] md:h-[850px] bg-[#0a0a0a] border border-white/10 rounded-lg relative overflow-hidden group mx-auto">
-             {/* Overlay to darken/tech-ify the image */}
-             <div className="absolute inset-0 bg-lux-green/5 pointer-events-none mix-blend-overlay"></div>
-             <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60"></div>
-
-             <img
-               src="https://i.ibb.co/HDfhZnPr/Untitled-4.jpg"
-               alt="Industrial Control Center"
-               className="w-full h-full object-cover opacity-80"
-             />
-
-             {/* Tech Overlays similar to DashboardEmbed header */}
-             <div className="absolute top-0 left-0 w-full h-8 bg-lux-black/80 border-b border-white/10 z-10 flex items-center justify-between px-4 backdrop-blur-sm">
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 rounded-full bg-lux-green animate-pulse"></div>
-                  <span className="text-[10px] font-mono text-lux-green uppercase tracking-wider">System Visualization</span>
-                </div>
-                <div className="text-[10px] font-mono text-gray-500 uppercase">
-                  Live Feed // Source: MAIN_PLANT_CAM_01
-                </div>
+           <div className="w-full h-[600px] md:h-[850px] bg-[#050505] border border-white/10 rounded-lg relative overflow-hidden group mx-auto shadow-2xl">
+             
+             {/* Background Image - Grayscale & Contrast */}
+             <div className="absolute inset-0">
+                <img
+                  src="https://i.ibb.co/FLqsFzX3/yacht.jpg"
+                  alt="Industrial Control Center"
+                  className="w-full h-full object-cover grayscale contrast-125 opacity-50 mix-blend-luminosity"
+                />
+                {/* Scanline/Grid Texture */}
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-10 bg-[length:100%_2px,3px_100%] pointer-events-none"></div>
+                <div className="absolute inset-0 bg-lux-green/5 mix-blend-overlay"></div>
              </div>
 
-             {/* Corner accents */}
-             <div className="absolute bottom-0 left-0 w-4 h-4 border-l border-b border-lux-green/50"></div>
-             <div className="absolute bottom-0 right-0 w-4 h-4 border-r border-b border-lux-green/50"></div>
+             {/* UI Overlay - Faux Interface */}
+             <div className="absolute inset-0 z-20 pointer-events-none p-4 md:p-8 flex flex-col justify-between">
+                
+                {/* Top Interface Bar */}
+                <div className="flex justify-between items-start">
+                    <div className="flex flex-col gap-1">
+                        <div className="flex items-center gap-2">
+                             <div className="w-2 h-2 bg-lux-green animate-pulse"></div>
+                             <span className="text-lux-green font-mono text-xs tracking-widest uppercase">LIVE FEED</span>
+                        </div>
+                        <div className="font-mono text-[10px] text-gray-400">ISO 800 // F.2.8 // 1/2000</div>
+                    </div>
+                    
+                    {/* Center Top Markings */}
+                    <div className="hidden md:flex gap-1">
+                        {Array.from({length: 20}).map((_, i) => (
+                            <div key={i} className={`w-1 h-2 ${i % 5 === 0 ? 'bg-white/40 h-3' : 'bg-white/10'}`}></div>
+                        ))}
+                    </div>
+
+                    <div className="text-right">
+                        <div className="text-white font-mono text-xs tracking-widest">CAM_04_EXT</div>
+                        <div className="text-lux-green font-mono text-xs">REC [00:42:19]</div>
+                    </div>
+                </div>
+
+                {/* Center Reticle */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-40">
+                    <Crosshair className="w-24 h-24 text-white stroke-[0.5]" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border border-white/20 rounded-full border-dashed animate-[spin_10s_linear_infinite]"></div>
+                </div>
+
+                {/* Main Border Frame */}
+                <div className="absolute inset-4 md:inset-8 border border-white/20 pointer-events-none">
+                    {/* Corner Brackets */}
+                    <div className="absolute -top-[1px] -left-[1px] w-8 h-8 border-l-2 border-t-2 border-lux-green"></div>
+                    <div className="absolute -top-[1px] -right-[1px] w-8 h-8 border-r-2 border-t-2 border-lux-green"></div>
+                    <div className="absolute -bottom-[1px] -left-[1px] w-8 h-8 border-l-2 border-b-2 border-lux-green"></div>
+                    <div className="absolute -bottom-[1px] -right-[1px] w-8 h-8 border-r-2 border-b-2 border-lux-green"></div>
+                </div>
+
+                {/* Bottom Interface Bar */}
+                <div className="flex justify-between items-end">
+                    <div className="space-y-1">
+                        <div className="flex items-center gap-2 text-white/60 font-mono text-[10px]">
+                            <Scan className="w-4 h-4" />
+                            <span>OBJECT_TRACKING: ENABLED</span>
+                        </div>
+                        <div className="font-mono text-[10px] text-lux-green">
+                            LAT: 43.7384° N  LNG: 7.4246° E
+                        </div>
+                    </div>
+
+                    <div className="flex items-end gap-4">
+                        <div className="flex flex-col items-end gap-1">
+                            <span className="text-[10px] font-mono text-gray-400">SIGNAL STRENGTH</span>
+                            <div className="flex gap-0.5">
+                                {[1,2,3,4,5].map(i => (
+                                    <div key={i} className={`w-1.5 h-4 ${i < 4 ? 'bg-lux-green' : 'bg-gray-700'}`}></div>
+                                ))}
+                            </div>
+                        </div>
+                        <Battery className="w-6 h-6 text-white/60" />
+                    </div>
+                </div>
+
+             </div>
+
           </div>
         ) : (
           <DashboardEmbed url={data.dashboardUrl} title={data.title} />

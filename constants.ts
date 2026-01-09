@@ -30,8 +30,8 @@ export const INDUSTRIES_DATA: Record<IndustryType, IndustryData> = {
   [IndustryType.CUSTOM]: {
     id: IndustryType.CUSTOM,
     title: 'CUSTOM SOLUTIONS',
-    subtitle: 'Enterprise & Industrial Command Centers',
-    description: 'We build mission-critical command centers for any industry. From automated manufacturing plants to smart city infrastructure, we transform complex data streams into real-time operational intelligence. Secure, scalable, and fully bespoke to your KPIs.',
+    subtitle: 'Bespoke Operations Dashboards',
+    description: "We build command centers for complex operations. Whether you're managing a superyacht, a property portfolio, or a private fleet, we turn fragmented data into a single live view of everything that matters. Secure, scalable, and tailored to how you actually work.",
     features: ['Multi-Source Data Integration', 'Industrial IoT & SCADA Support', 'Bespoke UI/UX Design', 'Predictive AI Modeling'],
     dashboardUrl: ''
   }
