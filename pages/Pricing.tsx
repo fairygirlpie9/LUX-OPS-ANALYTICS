@@ -256,7 +256,7 @@ const Pricing: React.FC = () => {
         
         <div className="bg-[#0b0c15] border border-white/10 rounded-xl p-12 max-w-5xl mx-auto flex flex-col items-center text-center">
           <p className="text-white font-mono text-xl md:text-2xl mb-10 leading-relaxed max-w-4xl">
-            Investment Range: £35K–£150K initial setup, with ongoing monitoring from £500–£3,500/month
+            Investment Range: £35K – £150K+ initial setup, plus monthly monitoring fee
           </p>
           <button 
             onClick={() => navigate('/contact')}

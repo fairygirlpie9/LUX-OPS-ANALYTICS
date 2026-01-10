@@ -12,7 +12,7 @@ const CONTENT = {
     dashboardTitle: "Residential Command",
     customTitle: "CUSTOM INTEGRATION",
     customDesc: "Unlike our commercial dashboards, residential estate systems are bespoke installations tailored to your property portfolio. Pricing reflects the complexity of integration, custom hardware installation, and the white-glove service expected at this level.",
-    investment: "Investment Range: £35K–£150K initial setup, with ongoing monitoring from £500–£3,500/month",
+    investment: "Investment Range: £35K–£150K+ initial setup, plus monthly monitoring fee",
     influencesTitle: "WHAT INFLUENCES YOUR PRICE:",
     influences: [
       {
@@ -44,7 +44,7 @@ const CONTENT = {
         title: "SINGLE ESTATE MONITORING",
         desc: "Real-time environmental data, security integration, staff tracking, and mobile access across your primary residence.",
         price: "From £35K",
-        sub: "+ £500/month",
+        sub: "+ Monthly Monitoring",
         popular: false
       },
       {
@@ -52,7 +52,7 @@ const CONTENT = {
         title: "MULTI-PROPERTY COMMAND",
         desc: "Centralized control across your property portfolio with advanced automation, wine cellar management, and priority support.",
         price: "From £75K",
-        sub: "+ £1,500/month",
+        sub: "+ Monthly Monitoring",
         popular: true
       },
       {
@@ -60,7 +60,7 @@ const CONTENT = {
         title: "FULL CONCIERGE ESTATE",
         desc: "Unlimited properties, predictive AI, custom RFID installations for high-value assets, dedicated account manager, and 24/7 emergency response.",
         price: "From £150K",
-        sub: "+ £3,500/month",
+        sub: "+ Monthly Monitoring",
         popular: false
       }
     ],
@@ -74,7 +74,7 @@ const CONTENT = {
     dashboardTitle: "Commandement Résidentiel",
     customTitle: "INTÉGRATION SUR MESURE",
     customDesc: "Contrairement à nos tableaux de bord commerciaux, les systèmes résidentiels sont des installations sur mesure adaptées à votre portefeuille. La tarification reflète la complexité de l'intégration, l'installation de matériel personnalisé et le service haut de gamme attendu à ce niveau.",
-    investment: "Fourchette d'investissement : 35 000 £ – 150 000 £ (installation initiale), avec surveillance continue de 500 £ à 3 500 £/mois",
+    investment: "Fourchette d'investissement : 35 000 £ – 150 000 £ (installation initiale), plus frais de surveillance mensuels",
     influencesTitle: "CE QUI INFLUENCE VOTRE PRIX :",
     influences: [
       {
@@ -106,7 +106,7 @@ const CONTENT = {
         title: "SURVEILLANCE DOMAINE UNIQUE",
         desc: "Données environnementales temps réel, sécurité, suivi du personnel et accès mobile pour votre résidence principale.",
         price: "Dès 35 000 £",
-        sub: "+ 500 £ / mois",
+        sub: "+ Surveillance Mensuelle",
         popular: false
       },
       {
@@ -114,7 +114,7 @@ const CONTENT = {
         title: "COMMANDEMENT MULTI-SITES",
         desc: "Contrôle centralisé de votre portefeuille avec automatisation avancée, gestion de cave à vin et support prioritaire.",
         price: "Dès 75 000 £",
-        sub: "+ 1 500 £ / mois",
+        sub: "+ Surveillance Mensuelle",
         popular: true
       },
       {
@@ -122,7 +122,7 @@ const CONTENT = {
         title: "DOMAINE CONCIERGERIE COMPLÈTE",
         desc: "Propriétés illimitées, IA prédictive, RFID sur mesure pour actifs de valeur, gestionnaire dédié et urgence 24/7.",
         price: "Dès 150 000 £",
-        sub: "+ 3 500 £ / mois",
+        sub: "+ Surveillance Mensuelle",
         popular: false
       }
     ],
@@ -136,7 +136,7 @@ const CONTENT = {
     dashboardTitle: "القيادة السكنية",
     customTitle: "تكامل مخصص",
     customDesc: "على عكس لوحات المعلومات التجارية، فإن أنظمة العقارات السكنية لدينا مصممة خصيصًا لتناسب محفظتك العقارية. يعكس السعر تعقيد التكامل، وتركيب الأجهزة المخصصة، والخدمة الفاخرة المتوقعة في هذا المستوى.",
-    investment: "نطاق الاستثمار: 35 ألف - 150 ألف جنيه إسترليني للإعداد الأولي، مع مراقبة مستمرة تبدأ من 500 - 3500 جنيه إسترليني شهريًا",
+    investment: "نطاق الاستثمار: 35 ألف - 150 ألف جنيه إسترليني للإعداد الأولي، بالإضافة إلى رسوم المراقبة الشهرية",
     influencesTitle: "ما الذي يؤثر على السعر:",
     influences: [
       {
@@ -168,7 +168,7 @@ const CONTENT = {
         title: "مراقبة عقار واحد",
         desc: "بيانات بيئية في الوقت الفعلي، وتكامل أمني، وتتبع الموظفين، والوصول عبر الهاتف المحمول لمسكنك الأساسي.",
         price: "من 35 ألف £",
-        sub: "+ 500 £ / شهر",
+        sub: "+ مراقبة شهرية",
         popular: false
       },
       {
@@ -176,7 +176,7 @@ const CONTENT = {
         title: "قيادة متعددة العقارات",
         desc: "تحكم مركزي عبر محفظتك العقارية مع أتمتة متقدمة، وإدارة المجموعات الخاصة، ودعم ذو أولوية.",
         price: "من 75 ألف £",
-        sub: "+ 1,500 £ / شهر",
+        sub: "+ مراقبة شهرية",
         popular: true
       },
       {
@@ -184,7 +184,7 @@ const CONTENT = {
         title: "عقار كونسيرج كامل",
         desc: "عقارات غير محدودة، وذكاء اصطناعي تنبؤي، وتركيبات RFID مخصصة للأصول عالية القيمة، ومدير حساب مخصص، واستجابة للطوارئ على مدار الساعة.",
         price: "من 150 ألف £",
-        sub: "+ 3,500 £ / شهر",
+        sub: "+ مراقبة شهرية",
         popular: false
       }
     ],
