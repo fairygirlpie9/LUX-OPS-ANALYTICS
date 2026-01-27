@@ -1,8 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DashboardEmbed from '../components/DashboardEmbed';
-import { Home, Shield, Thermometer, Users, Smartphone, Database, Globe } from 'lucide-react';
+import { Home, Shield, Thermometer, Users, Smartphone, Database, Globe, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import clsx from 'clsx';
+
+// Updated with client assets and accurate labels
+const DEMO_SLIDES = [
+  {
+    url: "https://i.ibb.co/4hGPTx1/luxres1.png", 
+    label: "LIVING ROOM // MAIN VIEW",
+    alt: "Luxury living room environment"
+  },
+  {
+    url: "https://i.ibb.co/FcnZcHF/luxres2.png",
+    label: "LIVING ROOM // AMBIENT CONTROL",
+    alt: "Luxury living room seating area"
+  },
+  {
+    url: "https://i.ibb.co/9HCtFqrS/luxres3.png",
+    label: "TABLET CONTROL // LIVING ROOM",
+    alt: "Tablet interface in living room"
+  },
+  {
+    url: "https://i.ibb.co/MysBQy1s/luxres4.png",
+    label: "WALL INTERFACE // HALLWAY",
+    alt: "Wall mounted control panel in hallway"
+  }
+];
 
 const CONTENT = {
   en: {
@@ -10,6 +34,7 @@ const CONTENT = {
     subtitle: "Private Estate Management",
     description: "Unified control systems for ultra-high-net-worth property portfolios. Security, environmental monitoring, and staff coordination in one interface.",
     dashboardTitle: "Residential Command",
+    demoSectionTitle: "LIVE INTERACTIVE DEMO",
     customTitle: "CUSTOM INTEGRATION",
     customDesc: "Unlike our commercial dashboards, residential estate systems are bespoke installations tailored to your property portfolio. Pricing reflects the complexity of integration, custom hardware installation, and the white-glove service expected at this level.",
     investment: "Investment Range: £35K–£150K+ initial setup, plus monthly monitoring fee",
@@ -72,6 +97,7 @@ const CONTENT = {
     subtitle: "Gestion de Domaines Privés",
     description: "Systèmes de contrôle unifiés pour portefeuilles immobiliers de luxe. Sécurité, surveillance environnementale et coordination du personnel dans une seule interface.",
     dashboardTitle: "Commandement Résidentiel",
+    demoSectionTitle: "DÉMO INTERACTIVE EN DIRECT",
     customTitle: "INTÉGRATION SUR MESURE",
     customDesc: "Contrairement à nos tableaux de bord commerciaux, les systèmes résidentiels sont des installations sur mesure adaptées à votre portefeuille. La tarification reflète la complexité de l'intégration, l'installation de matériel personnalisé et le service haut de gamme attendu à ce niveau.",
     investment: "Fourchette d'investissement : 35 000 £ – 150 000 £ (installation initiale), plus frais de surveillance mensuels",
@@ -134,6 +160,7 @@ const CONTENT = {
     subtitle: "إدارة الأملاك الخاصة",
     description: "أنظمة تحكم موحدة للمحافظ العقارية الفاخرة. الأمن، والمراقبة البيئية، وتنسيق الموظفين في واجهة واحدة.",
     dashboardTitle: "القيادة السكنية",
+    demoSectionTitle: "عرض تفاعلي مباشر",
     customTitle: "تكامل مخصص",
     customDesc: "على عكس لوحات المعلومات التجارية، فإن أنظمة العقارات السكنية لدينا مصممة خصيصًا لتناسب محفظتك العقارية. يعكس السعر تعقيد التكامل، وتركيب الأجهزة المخصصة، والخدمة الفاخرة المتوقعة في هذا المستوى.",
     investment: "نطاق الاستثمار: 35 ألف - 150 ألف جنيه إسترليني للإعداد الأولي، بالإضافة إلى رسوم المراقبة الشهرية",
@@ -196,6 +223,7 @@ const CONTENT = {
 const Residential: React.FC = () => {
   const navigate = useNavigate();
   const [lang, setLang] = useState<'en' | 'fr' | 'ar'>('en');
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const content = CONTENT[lang];
   const isRTL = lang === 'ar';
@@ -203,6 +231,25 @@ const Residential: React.FC = () => {
   // Helper to handle font switching (English uses display/mono, Arabic uses defaults/sans)
   const displayFont = isRTL ? "font-sans font-bold" : "font-display";
   const monoFont = isRTL ? "font-sans" : "font-mono";
+
+  // Preload images to prevent lag
+  useEffect(() => {
+    DEMO_SLIDES.forEach((slide) => {
+      const img = new Image();
+      img.src = slide.url;
+    });
+  }, []);
+
+  // Auto-advance slider
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % DEMO_SLIDES.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % DEMO_SLIDES.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + DEMO_SLIDES.length) % DEMO_SLIDES.length);
 
   return (
     <div className="min-h-screen pt-24 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" dir={isRTL ? "rtl" : "ltr"}>
@@ -245,8 +292,77 @@ const Residential: React.FC = () => {
          </p>
       </div>
 
+      {/* Hero Gallery Carousel */}
+      <div className="mb-16 relative w-full h-[400px] md:h-[500px] rounded-xl overflow-hidden border border-white/10 group bg-[#050505]">
+        {/* Slides */}
+        {DEMO_SLIDES.map((slide, index) => (
+          <div 
+            key={index}
+            className={clsx(
+              "absolute inset-0 transition-opacity duration-1000 ease-in-out",
+              index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+            )}
+          >
+            <img 
+              src={slide.url} 
+              alt={slide.alt} 
+              className="w-full h-full object-cover opacity-60 grayscale-[30%]"
+            />
+            {/* Tech Overlay Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/20" />
+            
+            {/* Slide Label */}
+            <div className="absolute bottom-12 left-8 md:left-12 z-20">
+               <div className="flex items-center gap-3 mb-2">
+                 <div className="w-1.5 h-1.5 bg-lux-green animate-pulse rounded-full" />
+                 <span className="text-lux-green font-mono text-xs uppercase tracking-widest">Live Integration</span>
+               </div>
+               <h3 className="text-white font-display font-bold text-2xl md:text-4xl uppercase tracking-wider">{slide.label}</h3>
+            </div>
+          </div>
+        ))}
+
+        {/* Controls */}
+        <button 
+          onClick={prevSlide}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 text-white/50 hover:text-lux-green transition-colors hover:bg-black/50 rounded-full md:opacity-0 md:group-hover:opacity-100"
+        >
+          <ChevronLeft className="w-8 h-8" />
+        </button>
+        <button 
+          onClick={nextSlide}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 text-white/50 hover:text-lux-green transition-colors hover:bg-black/50 rounded-full md:opacity-0 md:group-hover:opacity-100"
+        >
+          <ChevronRight className="w-8 h-8" />
+        </button>
+
+        {/* Progress Bar / Index */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/10 z-30">
+           <div 
+             className="h-full bg-lux-green transition-all duration-500 ease-out"
+             style={{ width: `${((currentSlide + 1) / DEMO_SLIDES.length) * 100}%` }}
+           />
+        </div>
+        
+        {/* Corner Accents */}
+        <div className="absolute top-4 left-4 w-4 h-4 border-l-2 border-t-2 border-lux-green z-20 opacity-50" />
+        <div className="absolute top-4 right-4 w-4 h-4 border-r-2 border-t-2 border-lux-green z-20 opacity-50" />
+        <div className="absolute bottom-4 left-4 w-4 h-4 border-l-2 border-b-2 border-lux-green z-20 opacity-50" />
+        <div className="absolute bottom-4 right-4 w-4 h-4 border-r-2 border-b-2 border-lux-green z-20 opacity-50" />
+
+        <div className="absolute bottom-4 right-8 font-mono text-xs text-white/50 z-20 hidden md:block">
+           {String(currentSlide + 1).padStart(2, '0')} // {String(DEMO_SLIDES.length).padStart(2, '0')}
+        </div>
+      </div>
+
       {/* Dashboard */}
       <div className="mb-24">
+        <div className="flex flex-col items-center mb-12">
+          <h2 className={clsx("text-3xl md:text-5xl font-bold text-white mb-6 uppercase tracking-tight text-center", displayFont)}>
+            {content.demoSectionTitle}
+          </h2>
+          <div className="w-24 h-1 bg-lux-green"></div>
+        </div>
         <DashboardEmbed url="https://majordomoresidential.netlify.app/" title={content.dashboardTitle} />
       </div>
 

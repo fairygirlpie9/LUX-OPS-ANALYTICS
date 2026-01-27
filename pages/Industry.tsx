@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { INDUSTRIES_DATA } from '../constants';
 import { IndustryType } from '../types';
 import DashboardEmbed from '../components/DashboardEmbed';
-import { ChevronRight, CheckCircle2, Check, Plus, Crosshair, Scan, Battery, Grip } from 'lucide-react';
+import { ChevronRight, ChevronLeft, CheckCircle2, Check, Plus, Crosshair, Scan, Battery, Grip } from 'lucide-react';
 import clsx from 'clsx';
 
 const INDUSTRY_PRICING = [
@@ -77,9 +77,23 @@ const RETAINERS = [
   }
 ];
 
+const MOTORSPORTS_SLIDES = [
+  {
+    url: "https://i.ibb.co/LXXGv9fT/toyota1.png",
+    label: "TRACKSIDE // ENGINEER TABLET",
+    alt: "Race engineer holding tablet with dashboard"
+  },
+  {
+    url: "https://i.ibb.co/3yJgYgqV/toyota2.png",
+    label: "PADDOCK // LIVE STATION",
+    alt: "Dashboard tablet on table in motorsports room"
+  }
+];
+
 const Industry: React.FC = () => {
   const { type } = useParams<{ type: string }>();
   const navigate = useNavigate();
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   // Type guard or fallback
   const industryId = Object.values(IndustryType).includes(type as IndustryType) 
@@ -88,6 +102,20 @@ const Industry: React.FC = () => {
 
   const data = INDUSTRIES_DATA[industryId];
   const isCustom = industryId === IndustryType.CUSTOM;
+  const isMotorsports = industryId === IndustryType.MOTORSPORTS;
+
+  // Auto-advance slider for Motorsports
+  useEffect(() => {
+    if (isMotorsports) {
+      const timer = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % MOTORSPORTS_SLIDES.length);
+      }, 5000);
+      return () => clearInterval(timer);
+    }
+  }, [isMotorsports]);
+
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % MOTORSPORTS_SLIDES.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + MOTORSPORTS_SLIDES.length) % MOTORSPORTS_SLIDES.length);
 
   return (
     <div className="min-h-screen pt-24 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -107,6 +135,77 @@ const Industry: React.FC = () => {
           {data.description}
         </p>
       </div>
+
+      {/* MOTORSPORTS CAROUSEL */}
+      {isMotorsports && (
+        <div className="mb-16 relative w-full h-[400px] md:h-[500px] rounded-xl overflow-hidden border border-white/10 group bg-[#050505]">
+          {/* Slides */}
+          {MOTORSPORTS_SLIDES.map((slide, index) => (
+            <div 
+              key={index}
+              className={clsx(
+                "absolute inset-0 transition-opacity duration-1000 ease-in-out",
+                index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+              )}
+            >
+              <img 
+                src={slide.url} 
+                alt={slide.alt} 
+                className="w-full h-full object-cover opacity-80"
+              />
+              {/* Tech Overlay Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/20" />
+              
+              {/* Slide Label */}
+              <div className="absolute bottom-12 left-8 md:left-12 z-20">
+                 <div className="flex items-center gap-3 mb-2">
+                   <div className="w-1.5 h-1.5 bg-lux-green animate-pulse rounded-full" />
+                   <span className="text-lux-green font-mono text-xs uppercase tracking-widest">Live Deployment</span>
+                 </div>
+                 <h3 className="text-white font-display font-bold text-2xl md:text-4xl uppercase tracking-wider">{slide.label}</h3>
+              </div>
+            </div>
+          ))}
+
+          {/* Controls */}
+          <button 
+            onClick={prevSlide}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 text-white/50 hover:text-lux-green transition-colors hover:bg-black/50 rounded-full md:opacity-0 md:group-hover:opacity-100"
+          >
+            <ChevronLeft className="w-8 h-8" />
+          </button>
+          <button 
+            onClick={nextSlide}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 text-white/50 hover:text-lux-green transition-colors hover:bg-black/50 rounded-full md:opacity-0 md:group-hover:opacity-100"
+          >
+            <ChevronRight className="w-8 h-8" />
+          </button>
+
+          {/* Progress Bar */}
+          <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/10 z-30">
+             <div 
+               className="h-full bg-lux-green transition-all duration-500 ease-out"
+               style={{ width: `${((currentSlide + 1) / MOTORSPORTS_SLIDES.length) * 100}%` }}
+             />
+          </div>
+          
+          {/* Corner Accents */}
+          <div className="absolute top-4 left-4 w-4 h-4 border-l-2 border-t-2 border-lux-green z-20 opacity-50" />
+          <div className="absolute top-4 right-4 w-4 h-4 border-r-2 border-t-2 border-lux-green z-20 opacity-50" />
+          <div className="absolute bottom-4 left-4 w-4 h-4 border-l-2 border-b-2 border-lux-green z-20 opacity-50" />
+          <div className="absolute bottom-4 right-4 w-4 h-4 border-r-2 border-b-2 border-lux-green z-20 opacity-50" />
+        </div>
+      )}
+
+      {/* Header above Demo for Motorsports */}
+      {isMotorsports && (
+        <div className="flex flex-col items-center mb-12">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 uppercase tracking-tight text-center font-display">
+            LIVE INTERACTIVE DEMO
+          </h2>
+          <div className="w-24 h-1 bg-lux-green"></div>
+        </div>
+      )}
 
       {/* Dashboard Embed or Custom Image */}
       <div className="mb-16">

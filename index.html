@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LUX OPS | Real-Time Analytics</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23CCFF00' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z'/></svg>" />
+    
+    <!-- Preload Residential Demo Images -->
+    <link rel="preload" as="image" href="https://i.ibb.co/4hGPTx1/luxres1.png">
+    <link rel="preload" as="image" href="https://i.ibb.co/FcnZcHF/luxres2.png">
+    <link rel="preload" as="image" href="https://i.ibb.co/9HCtFqrS/luxres3.png">
+    <link rel="preload" as="image" href="https://i.ibb.co/MysBQy1s/luxres4.png">
+
+    <!-- Preload Motorsports Images -->
+    <link rel="preload" as="image" href="https://i.ibb.co/LXXGv9fT/toyota1.png">
+    <link rel="preload" as="image" href="https://i.ibb.co/3yJgYgqV/toyota2.png">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,16 +67,19 @@
   <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.10.1",
-    "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
-    "@react-three/fiber": "https://esm.sh/@react-three/fiber@^9.4.2",
-    "@react-three/drei": "https://esm.sh/@react-three/drei@^10.7.7",
-    "three": "https://esm.sh/three@^0.182.0",
-    "clsx": "https://esm.sh/clsx@^2.1.1",
-    "vite": "https://esm.sh/vite@^7.3.0",
+    "react": "https://esm.sh/react@18.3.1",
+    "react/jsx-runtime": "https://esm.sh/react@18.3.1/jsx-runtime",
+    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
+    "react-dom": "https://esm.sh/react-dom@18.3.1",
+    "react-router-dom": "https://esm.sh/react-router-dom@6.22.3?deps=react@18.3.1,react-dom@18.3.1",
+    "lucide-react": "https://esm.sh/lucide-react@0.363.0?deps=react@18.3.1",
+    "three": "https://esm.sh/three@0.160.0",
+    "@react-three/fiber": "https://esm.sh/@react-three/fiber@8.16.1?deps=three@0.160.0,react@18.3.1,react-dom@18.3.1",
+    "@react-three/drei": "https://esm.sh/@react-three/drei@9.102.0?deps=three@0.160.0,react@18.3.1,react-dom@18.3.1,@react-three/fiber@8.16.1",
+    "clsx": "https://esm.sh/clsx@2.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "vite": "https://esm.sh/vite@^7.3.1",
     "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
